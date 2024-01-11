@@ -3,7 +3,8 @@ if (!empty($_POST)) {
   if ($_POST['acc'] == 'admin' && $_POST['pw'] == '1234') {
     $_SESSION['login'] = 1;
   } else {
-    $error = "<div class='ct' style='color:red>帳號或密碼錯誤</div>";
+    $error = "<div class='ct' style='color:red'>帳號或密碼錯誤</div>";
+
   }
 }
 ?>
@@ -61,7 +62,7 @@ if (!empty($_POST)) {
       <?php
       } else {
       ?>
-        <form action="" method="post" style="width:40%;margin:20px auto">
+        <form action="?" method="post" style="width:40%;margin:20px auto">
           <h3 class="ct">管理者登入</h3>
           <?php 
           if(isset($error)){
