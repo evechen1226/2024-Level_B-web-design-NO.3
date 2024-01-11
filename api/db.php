@@ -4,7 +4,7 @@ session_start();
 class DB
 {
 
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=web11";
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db11";
     protected $pdo;
     protected $table;
 
@@ -160,7 +160,7 @@ function to($url)
     header("location:$url");
 }
 
-$Total = new DB('total');
+$Poster = new DB('poster');
 $User = new DB('user');
 $Que= new DB('ques');
 $News = new DB('news');
