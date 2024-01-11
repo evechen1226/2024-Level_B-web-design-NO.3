@@ -35,12 +35,12 @@
                 <div><input type="text" name="name[]" value="<?= $po['name'] ?>"></div>
                 <div>
                     <!-- 當data-XXX，太長的話，會將其斷行，等號對齊，視覺上會較好閱讀 -->
-                    <input type="button" value="往上" 
-                        date-id="<?= $po['id'] ?>" 
-                        date-sw="<?= ($idx!==0)?$pos[$idx-1]['id']:$idx ?>">
-                    <input type="button" value="往下" 
-                        date-id="<?= $po['id'] ?>" 
-                        date-sw="<?=((count($pos)-1)!==$idx)?$pos[$idx+1]['id']:$idx ?>">
+                    <input class='btn' type="button" value="往上" 
+                        data-id="<?= $po['id'] ?>" 
+                        data-sw="<?= ($idx!==0)?$pos[$idx-1]['id']:$po['id'] ?>">
+                    <input class='btn'type="button" value="往下" 
+                        data-id="<?= $po['id'] ?>" 
+                        data-sw="<?=((count($pos)-1)!==$idx)?$pos[$idx+1]['id']:$po['id'] ?>">
                 </div>
                 <div style="color:black;">
                     
@@ -83,3 +83,15 @@
             </div>
         </form>
     </div>
+
+    <script>
+        $(".btn").on('click',function(){
+            let id=$(this).data('id');
+            let sw=$(this).data('sw');
+            // let table = 'poster';
+
+            $.post("./api/sw.php",{id,sw,table:'poster'},()=>{
+                location.reload();
+            })
+        })
+    </script>
