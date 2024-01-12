@@ -91,23 +91,32 @@
     })
 
     $(".sw-btn").on("click", function() {
-        let id=$(this).data('id');
-            let sw=$(this).data('sw');
-            // let table = 'movie';
-            $.post("./api/sw.php",{id,sw,table:'movie'},()=>{
-                location.reload();
-            })
+        let id = $(this).data('id');
+        let sw = $(this).data('sw');
+        // let table = 'movie';
+        $.post("./api/sw.php", {
+            id,
+            sw,
+            table: 'movie'
+        }, () => {
+            location.reload();
+        })
     })
     $(".edit-btn").on("click", function() {
+        let id = $(this).data('id');
+        location.href=`?do=edit_movie&id=${id}`;
 
     })
     $(".del-btn").on("click", function() {
 
-        let id=$(this).data('id');
-        $.post("./api/del.php",{id,sw,table:'movie'},()=>{
-                location.reload();
-            })
+        let id = $(this).data('id');
+        $.post("./api/del.php", {
+            id,
+            sw,
+            table: 'movie'
+        }, () => {
+            location.reload();
+        })
 
     })
-
 </script>
