@@ -1,53 +1,53 @@
 <button onclick="location.href='?do=add_movie.php'">新增電影</button>
 <hr>
 <style>
-    .item div {
-        box-sizing: border-box;
-        color: black;
-    }
+.item div {
+    box-sizing: border-box;
+    color: black;
+}
 
-    .item {
-        background-color: white;
-        width: 100%;
-        display: flex;
-        padding: 3px;
-        box-sizing: border-box;
-        margin: 3px 0;
-    }
+.item {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    padding: 3px;
+    box-sizing: border-box;
+    margin: 3px 0;
+}
 
-    .item>div:nth-child(1) {
-        width: 15%;
-    }
+.item>div:nth-child(1) {
+    width: 15%;
+}
 
-    .item>div:nth-child(2) {
-        width: 12%;
-    }
+.item>div:nth-child(2) {
+    width: 12%;
+}
 
-    .item>div:nth-child(3) {
-        width: 73%;
-    }
+.item>div:nth-child(3) {
+    width: 73%;
+}
 </style>
 <div style="width: 100%;height:415px;overflow:auto;">
     <?php
 
     $movies = $Movie->all(" order by rank");
-    foreach ($movies as $idx=>$movie) {
-
+    foreach ($movies as $movie) {
+    
     ?>
 
-        <div class="item">
-            <div><img src="./img/<?= $movie['poster']; ?>" style="width: 100%;"></div>
-            <div>
-                分級:<img src="./icon/03C0<?= $movie['level'] ?>.png" style="width:20%">
+    <div class="item">
+        <div><img src="./img/<?= $movie['poster']; ?>" style="width: 100%;"></div>
+        <div>
+            分級:<img src="./icon/03C0<?=$movie['level']?>.png" style="width:20%">
+        </div>
+        <div>
+            <div style="display:flex;width:100%">
+                <div style="width:33.33%">名片：<?=$movie['name']?></div>
+                <div style="width:33.33%">片長:<?=$movie['length']?></div>
+                <div style="width:33.33%">上映日期:<?=$movie['ondate']?></div>
             </div>
             <div>
-                <div style="display:flex;width:100%">
-                    <div style="width:33.33%">名片：<?= $movie['name'] ?></div>
-                    <div style="width:33.33%">片長:<?= $movie['length'] ?></div>
-                    <div style="width:33.33%">上映日期:<?= $movie['ondate'] ?></div>
-                </div>
-                <div>
-                    <button class="show-btn" data-id="<?= $movie['id']; ?>">
+            <button class="show-btn" data-id="<?= $movie['id']; ?>">
                         顯示
                     </button>
                     <button 
