@@ -73,20 +73,22 @@
 <script>
     $(".show-btn").on("click", function() {
         let id = $(this).data('id');
-        $.post("./api/show.php", {
-            id
-        }, () => {
+        $.post("./api/show.php", {id}, () => {
             location.reload()
 
             // 利用前端AJAX的方式
-            // switch($(this).text()) {
-            //     case "隱藏":
-            //         $(this).text("顯示")
-            //     break;
-            //     case "顯示":
-            //         $(this).text("隱藏")
-            //     break;
-            // }
+            // 1. 
+            //     switch($(this).text()) {
+                //     case "隱藏":
+                    //         $(this).text("顯示")
+                    //     break;
+                    //     case "顯示":
+                        //         $(this).text("隱藏")
+                        //     break;
+                        // }
+            //2. 
+            // 利用三元運算簡化程式碼
+            // $(this).text(($(this).text()=='顯示')?'隱藏':'顯示')
         })
     })
 
