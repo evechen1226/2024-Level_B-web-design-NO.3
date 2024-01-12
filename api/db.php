@@ -161,7 +161,7 @@ function to($url)
 }
 
 $Poster = new DB('poster');
-$User = new DB('user');
+$Movie = new DB('movie');
 $Que= new DB('ques');
 $News = new DB('news');
 $Log = new DB('log');
