@@ -7,7 +7,7 @@
 <h2 class="ct">編輯院線片</h2>
 <!-- 實務上要檢查$_GET 拿到的資料 -->
 <?php $movie = $Movie->find($_GET['id']); ?>
-<form action="./api/edit_movie.php" method="post" enctype="multipart/form-data">
+<form action="./api/save_movie.php" method="post" enctype="multipart/form-data">
     <div style="display:flex;align-items:start;">
         <div style="width:15%;">影片資料</div>
         <div style="width:85%;">
