@@ -1,14 +1,63 @@
+<style>
+    .lists {
+        position: relative;
+        left: 114px;
+    }
+
+    .item * {
+        box-sizing: border-box;
+    }
+
+    .item {
+        box-sizing: border-box;
+        width: 200px;
+        height: 240px;
+        margin: auto;
+        position: absolute;
+        display: none;
+    }
+
+    .item div img {
+        width: 100%;
+        height: 220px;
+    }
+
+    .item div {
+        text-align: center;
+    }
+    .left, .right{
+        width: 0;
+        border: 20px solid black;
+        border-top-color:transparent;
+        border-bottom-color: transparent;
+    }
+</style>
 <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
     <div class="rb tab" style="width:95%;">
-        <div>
-            <ul class="lists">
-            </ul>
-            <ul class="controls">
-            </ul>
+        <div class="lists">
+            <?php
+            $posters = $Poster->all(['sh' => 1], " order by rank");
+            foreach ($posters as $poster) {
+            ?>
+                <div class="item">
+                    <div class="poster"><img src="./img/<?= $poster['img'] ?>" alt=""></div>
+                    <div><?= $poster['name'] ?></div>
+                </div>
+
+            <?php
+            }
+            ?>
+        </div>
+        <div class="controls">
         </div>
     </div>
 </div>
+</div>
+<script>
+    // .eq() 位置
+    $(".item").eq(0). show();
+</script>
 <style>
     .movies {
         display: flex;
