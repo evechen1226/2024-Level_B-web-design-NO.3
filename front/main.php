@@ -40,7 +40,7 @@
             $now = $_GET['p'] ?? 1;
             $start = ($now - 1) * $div;
 
-            $movies = $Movie->all(" where `ondate`>='$ondate' && `ondate`<='$today' && `sh`=1 && order by rank limit $start,$dive");
+            $movies = $Movie->all(" where `ondate`>='$ondate' && `ondate`<='$today' && `sh`=1 order by rank limit $start,$dive");
             ?>
             <div class="movie">
                 <div>
