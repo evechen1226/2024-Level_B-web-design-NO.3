@@ -116,6 +116,7 @@
     $(".item").eq(0).show();
     let total = $(".btn").length
     let now = 0;
+    let next = 0;
     let timer = setInterval(() => {
         slide()
     }, 3000)
@@ -123,11 +124,17 @@
     function slide() {
 
         let ani = $(".item").eq(now).data("ani");
-        let next = now + 1;
-
-        if (next >= total) {
-            next = 0
+       
+        // 判斷圖片有沒有被點擊
+        if (typeof(n) == 'underfinded') {
+            next = now + 1;
+            if (next >= total) {
+                next = 0
+            }
+        } else {
+            next = n
         }
+
         switch (ani) {
             case 1:
 
@@ -155,8 +162,6 @@
     }
 
 
-
-
     let p = 0;
 
     $(".left,.right").on("click", function() {
@@ -177,6 +182,13 @@
             right: 90 * p
         })
     })
+
+    // 點擊圖片換圖
+    $('.btn').on('click', function() {
+        let idx = $(this).index()
+        slide(idx);
+    })
+
 
     // 暫停動畫
     $(".btn").hover(
