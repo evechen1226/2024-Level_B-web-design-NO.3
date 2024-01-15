@@ -1,8 +1,8 @@
 <?php
 $movie=$_GET['movie'];
 $date=$_GET['date'];
-$H=date("6");
-$start=($H<14)?1:7-ceil((24-$H)/2);
+$H=date("G");
+$start=($H>=14 && $date==date("Y-m-d"))?1:7-ceil((24-$H)/2);
 //$start=($H<14)?1:6-ceil(((24-$H)/2)-1);
 
 for($i=$start;$i<=5;$i++){
