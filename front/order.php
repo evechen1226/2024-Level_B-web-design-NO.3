@@ -21,19 +21,26 @@
     getMovies();
 
     function getMovies(){
-        $.get("./api.get_movies.php"),(movies)=>{
+        $.get("./api/get_movies.php",(movies)=>{
+
             $('#movie').html(movies);
-        }
+            let date=$("#movie").val();
+            getDates(id) //電影的id
+
+        })
     }
-    function getDates(){
-        $.get("./api.get_dates.php"),(dates)=>{
+    function getDates(id){
+        $.get("./api/get_dates.php",{id},(id)=>{
             $('#date').html(dates);
-        }
+            let movie=$('#movie').val()
+            let date=$('#date').val()
+            getSeesions(movie,date)
+        })
     }
-    function getSeesions(){
-        $.get("./api.get_sessions.php"),(sessions)=>{
+    function getSeesions(movie,date){
+        $.get("./api/get_sessions.php",{movie,id},(sessions)=>{
             $('#sessions').html(sessions);
-        }
+        })
     }
 
 </script>
