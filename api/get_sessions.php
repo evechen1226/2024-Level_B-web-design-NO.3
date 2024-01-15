@@ -10,6 +10,6 @@ for($i=$start;$i<=5;$i++){
 
     $qt=$Order->sum('qt',['movie'=>$movieName,'date'=>$date,'session'=>$sess[$i]]);
     $lave=20-$qt;
-    echo "<option value='{$sess[$i]}'> {$sess[$i]} 剩餘座位 20</option>";
+    echo "<option value='{$sess[$i]}'> {$sess[$i]} 剩餘座位 $lave</option>";
 }
 ?>
