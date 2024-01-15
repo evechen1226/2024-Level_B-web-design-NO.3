@@ -172,6 +172,7 @@ $sess=[
     4=>'20:00:~22:00',
     5=>'22:00:~24:00',
 ];
+$Oreders=new DB('orders');
 
 // // 進站人數檢查
 // if (!isset($_SESSION['visited'])) {
