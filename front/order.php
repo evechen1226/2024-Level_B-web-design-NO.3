@@ -15,7 +15,7 @@
     <div>
         <label for="">場次</label>
         <select name="session" id="session">
-            
+
         </select>
     </div>
     <div>
@@ -26,35 +26,44 @@
 <script>
     getMovies();
 
-    $("#movie").on("change",function(){
-        let id=$("#movie").val();
+    // 修改movie，連動date
+    $("#movie").on("change", function() {
+        let id = $("#movie").val();
         getDates()
         // getDates($("#movie").val())
     })
+    // 修改date，連動sessions
+    $("#date").on('change', function() {
+        getSessions($("#movie").val().$("#date").val())
+    })
 
-    function getMovies(){
-        $.get("./api/get_movies.php",(movies)=>{
+    function getMovies() {
+        $.get("./api/get_movies.php", (movies) => {
 
             $('#movie').html(movies);
-            let test=$('#movie').html(movies)
-            let id=$("#movie").val();
+            let id = $("#movie").val();
             getDates(id) //電影的id
-            console.log(test)
 
         })
     }
-    function getDates(id){
-        $.get("./api/get_dates.php",{id},(dates)=>{
+
+    function getDates(id) {
+        $.get("./api/get_dates.php", {
+            id
+        }, (dates) => {
             $('#date').html(dates);
-            let movie=$('#movie').val()
-            let date=$('#date').val()
-            getSeesions(movie,date)
+            let movie = $('#movie').val()
+            let date = $('#date').val()
+            getSeesions(movie, date)
         })
     }
-    function getSeesions(movie,date){
-        $.get("./api/get_sessions.php",{movie,date},(sessions)=>{
+
+    function getSeesions(movie, date) {
+        $.get("./api/get_sessions.php", {
+            movie,
+            date
+        }, (sessions) => {
             $('#sessions').html(sessions);
         })
     }
-
 </script>
