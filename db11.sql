@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-01-11 09:33:33
+-- 產生時間： 2024-01-15 09:25:27
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `movie` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) NOT NULL,
   `name` text NOT NULL,
-  `lavel` int(1) UNSIGNED NOT NULL,
+  `level` int(1) UNSIGNED NOT NULL,
   `length` int(3) UNSIGNED NOT NULL,
   `ondate` date NOT NULL,
   `publish` text NOT NULL,
@@ -40,6 +40,29 @@ CREATE TABLE `movie` (
   `intro` text NOT NULL,
   `sh` int(1) UNSIGNED NOT NULL,
   `rank` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `movie`
+--
+
+INSERT INTO `movie` (`id`, `name`, `level`, `length`, `ondate`, `publish`, `director`, `trailer`, `poster`, `intro`, `sh`, `rank`) VALUES
+(1, '魔法公主', 1, 120, '2024-01-15', 'AAAA', 'BBBB', '13214354', '1648284360631.gif', 'sfgsfdgdsfg', 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `no` text NOT NULL,
+  `movie` text NOT NULL,
+  `date` date NOT NULL,
+  `session` text NOT NULL,
+  `qt` int(10) UNSIGNED NOT NULL,
+  `seats` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -65,9 +88,7 @@ INSERT INTO `poster` (`id`, `name`, `img`, `sh`, `rank`, `ani`) VALUES
 (1, 'safdsaf', '1648284360631.gif', 1, 0, 2),
 (2, 'safdsaf', 'Pasted image 20231003112009.png', 1, 3, 3),
 (3, '03A01', '03A01.jpg', 1, 5, 1),
-(4, '03A02', '03A02.jpg', 1, 2, 3),
-(8, '', '', 0, 0, 0),
-(9, '', '', 0, 0, 0);
+(4, '03A02', '03A02.jpg', 1, 2, 3);
 
 --
 -- 已傾印資料表的索引
@@ -77,6 +98,12 @@ INSERT INTO `poster` (`id`, `name`, `img`, `sh`, `rank`, `ani`) VALUES
 -- 資料表索引 `movie`
 --
 ALTER TABLE `movie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -93,6 +120,12 @@ ALTER TABLE `poster`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `movie`
 --
 ALTER TABLE `movie`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `orders`
+--
+ALTER TABLE `orders`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
