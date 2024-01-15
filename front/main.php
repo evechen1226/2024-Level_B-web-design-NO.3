@@ -1,12 +1,18 @@
 <style>
 .lists{
-   /*  position: relative; */
+    /* 設定為父層 */
+    position: relative;
     left:114px;
+    /* 防止溢出 */
+    overflow: hidden; 
+    width: 200px;
+    height: 240px;
 }
 .item *{
     box-sizing: border-box;
 }
 .item{
+
  width:200px;
  height:240px;
  margin:auto;
@@ -106,7 +112,10 @@ function slide(){
     if(now>8){
         now=0;
     }
-    $(".item").eq(now).show();
+    $(".item").hide(1000,()=>{
+        $(".item").eq(now).show(1000);
+    })
+    
 }
 
 
